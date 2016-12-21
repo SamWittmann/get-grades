@@ -10,6 +10,9 @@ Feel free to share with other Rice people eagerly awaiting their final grades
 # initialize prev_grades to null
 prev_grades = None
 
+# initializes the number of checks to 0
+num_checks = 0
+
 
 def get_grades():
     """
@@ -51,10 +54,6 @@ def get_grades():
     if prev_grades is None:
         prev_grades = grades_list
 
-    # print a timestamp each time grades are checked
-    # (feel free to comment out if you'd rather not get a message each hour)
-    print(datetime.now().time())
-
     # if new grades have been entered, print them
     if grades_list != prev_grades:
         for idx in range(len(titles_list)):
@@ -63,9 +62,15 @@ def get_grades():
     # update the previous grades
     prev_grades = grades_list
 
-    # create and begin a timer that will check for new grades each hour
-    timer = Timer(3600.0, get_grades)
+    # create and begin a timer that will check for new grades every 10 minutes
+    timer = Timer(600.0, get_grades)
     timer.start()
+
+    # increments the number of checks each time data is scraped, printing the time of the last scrape each 4 scrapes
+    global num_checks
+    num_checks += 1
+    if num_checks % 4 == 0:
+        print(datetime.now().time())
 
 # run the script
 get_grades()
