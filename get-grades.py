@@ -5,7 +5,7 @@ from datetime import datetime
 
 """
 Created by Sam Wittmann, Rice University, December 2016
-Feel free to share with other Rice people eagerly awaiting their final grades
+Feel free to share with other Rice people trying to clean their hands of this semester as soon as possible
 """
 # initialize prev_grades to an empty list
 prev_grades = []
