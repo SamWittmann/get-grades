@@ -19,7 +19,7 @@ def get_grades():
     Checks Esther for final grades
     """
     # create Chrome browser
-    driver = webdriver.Chrome('C:\\Users\Sam\Desktop\PythonStuff\chromedriver')
+    driver = webdriver.Chrome('ENTER FILEPATH TO CHROMEDRIVER HERE')
 
     # open ESTHER
     driver.get("https://esther.rice.edu/selfserve/twbkwbis.P_WWWLogin")
