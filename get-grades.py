@@ -7,8 +7,8 @@ from datetime import datetime
 Created by Sam Wittmann, Rice University, December 2016
 Feel free to share with other Rice people eagerly awaiting their final grades
 """
-# initialize prev_grades to null
-prev_grades = None
+# initialize prev_grades to an empty list
+prev_grades = []
 
 # initializes the number of checks to 0
 num_checks = 0
@@ -49,10 +49,11 @@ def get_grades():
     # close the browser now that the required information has been collected
     driver.close()
 
-    # make sure some list of previous grades exists
+    # the first time grades are checked, prev_grades is initialized to be different from the scraped grades so that
+    # the grades are always printed the first iteration
     global prev_grades
-    if prev_grades is None:
-        prev_grades = grades_list
+    if num_checks == 0:
+        prev_grades = list(grades_list) + ["delta"]
 
     # if new grades have been entered, print them
     if grades_list != prev_grades:
@@ -63,7 +64,7 @@ def get_grades():
     prev_grades = grades_list
 
     # create and begin a timer that will check for new grades every 10 minutes
-    timer = Timer(600.0, get_grades)
+    timer = Timer(5.0, get_grades)
     timer.start()
 
     # increments the number of checks each time data is scraped, printing the time of the last scrape each 4 scrapes
