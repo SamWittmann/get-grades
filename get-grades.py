@@ -51,9 +51,12 @@ def get_grades():
     if prev_grades is None:
         prev_grades = grades_list
 
-    # if new grades have been entered, print them along with a timestamp
+    # print a timestamp each time grades are checked
+    # (feel free to comment out if you'd rather not get a message each hour)
+    print(datetime.now().time())
+
+    # if new grades have been entered, print them
     if grades_list != prev_grades:
-        print(datetime.now().time())
         for idx in range(len(titles_list)):
             print(titles_list[idx] + ": " + grades_list[idx])
 
